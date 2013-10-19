@@ -5,9 +5,10 @@ module('Integration Testing', {setup: setupTest, teardown: teardownTest});
 function setupTest(){
   initialize(null, true);
 }
-
 function teardownTest(){
+  tickets = [];
 }
+
 
 test('Create seat sections', function(){
   expect(10);
@@ -33,7 +34,10 @@ test('Create seat sections', function(){
   deepEqual(tickets.length, 260, 'after second click, should be an array with 260 objects');
   deepEqual(tickets[259].price, 65, 'after second click, price property at array index 259 should be 65');
   deepEqual(tickets[259].seatNumber, 'VIP60', 'after second click, seat number property at array index 259 should be VIP60');
+  teardownTest();
 });
+
+
 
 test('Create seat sections, in reverse order', function(){
   expect(10);
@@ -59,4 +63,5 @@ test('Create seat sections, in reverse order', function(){
   deepEqual(tickets.length, 260, 'after second click, should be an array with 260 objects');
   deepEqual(tickets[259].price, 35, 'after second click, price property at array index 259 should be 35');
   deepEqual(tickets[259].seatNumber, 'GA200', 'after second click, seat number property at array index 259 should be GA200');
+  teardownTest();
 });
