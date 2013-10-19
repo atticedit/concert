@@ -10,15 +10,15 @@ function teardownTest(){
 }
 
 test('Create seat sections', function(){
-  expect(12);
+  expect(10);
 
   $('#select').val('GA');
   $('#number').val('200');
   $('#price').val('35');
   $('#createSeats').trigger('click');
   deepEqual($('#general > div').length, 200, 'after first click, GA grid should have 200 seats');
-  deepEqual($('#wrapper').length, 1, 'after first click, should be one grid in the #wrapper');
-  deepEqual($('#general:last-child').text(), 'GA200', 'after first click, p in last GA seat should have value of GA200'); // if fails, try no parens on 200
+  // deepEqual($('#wrapper').length, 1, 'after first click, should be one grid in the #wrapper');//deleting as we know #general is there because we just checked it had 200 seats in it.
+  deepEqual($('#general > div:last-child').text(), 'GA200', 'after first click, p in last GA seat should have value of GA200');
   deepEqual(tickets.length, 200, 'after first click, should be an array with 200 objects');
   deepEqual(tickets[199].price, 35, 'after first click, price property at array index 199 should be 35');
   deepEqual(tickets[199].seatNumber, 'GA200', 'after first click, seat number property at array index 199 should be GA200');
@@ -28,8 +28,8 @@ test('Create seat sections', function(){
   $('#price').val('65');
   $('#createSeats').trigger('click');
   deepEqual($('#vip > div').length, 60, 'after second click, VIP grid should have 60 seats');
-  deepEqual($('#wrapper').length, 2, 'after second click, should be two grids in the #wrapper');
-  deepEqual($('#vip:last-child').text(), 'VIP60', 'after second click, p in last VIP seat should have value of VIP60'); // if fails, try no parens on 200
+  // deepEqual($('#wrapper').length, 2, 'after second click, should be two grids in the #wrapper');//same as above. Plus there will be 3 divs in the wrapper from the body, regardless of the click events (#vip, #filler & #general)
+  deepEqual($('#vip > div:last-child').text(), 'VIP60', 'after second click, p in last VIP seat should have value of VIP60');
   deepEqual(tickets.length, 260, 'after second click, should be an array with 260 objects');
   deepEqual(tickets[259].price, 65, 'after second click, price property at array index 259 should be 65');
   deepEqual(tickets[259].seatNumber, 'VIP60', 'after second click, seat number property at array index 259 should be VIP60');
