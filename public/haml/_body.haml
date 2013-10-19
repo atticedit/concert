@@ -1,7 +1,7 @@
 .row
   .small-12.columns
     %h1 Concert Tickets
-.row
+.row.adminControls
   .small-3.columns
     %select#select
       %option General Admission
@@ -14,7 +14,7 @@
     %input#createSeats.button.small.radius.success{type: 'button', value: 'Create Seats'}
 .row
   .small-12.columns
-    #filler
+    .filler
 .row
   .small-4.columns.small-offset-4
     #stage
@@ -22,5 +22,5 @@
 .row
   .small-8.columns.small-offset-2#wrapper
     #vip
-    #filler
+    .filler
     #general

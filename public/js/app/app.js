@@ -1,6 +1,7 @@
 'use strict';
 
 var tickets = [];
+var grids = [];
 
 $(document).ready(initialize);
 
@@ -23,12 +24,15 @@ function createSeats(){
   if(seatType === 'VIP'){
     seatSection = 'VIP';
     seatType = 'vip';
+    grids.push('vip');
   }else{
     seatSection = 'GA';
     seatType = 'general';
+    grids.push('general');
   }
   seatGenerator(number, seatType, price, seatSection);
   ticketGenerator(number, price, seatSection);
+  removeControls();
 }
 
 
@@ -59,6 +63,11 @@ function ticketGenerator(number, price, seatSection){
   }
 }
 
+function removeControls(){
+  if(grids.length > 1){
+    $('#adminControls').remove();
+  }
+}
 // // -------------------------------------------------------------------- //
 // // -------------------------------------------------------------------- //
 // // -------------------------------------------------------------------- //

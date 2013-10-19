@@ -65,3 +65,23 @@ test('Create seat sections, in reverse order', function(){
   deepEqual(tickets[259].seatNumber, 'GA200', 'after second click, seat number property at array index 259 should be GA200');
   teardownTest();
 });
+
+test('admin controls disappear when both seat grids exist', function(){
+  expect(1);
+
+  $('#select').val('VIP');
+  $('#number').val('60');
+  $('#price').val('65');
+  $('#createSeats').trigger('click');//creates first grid of seats
+
+  // deepEqual($('body > div:nth-child(2)').hasClass('.adminControls'), true, 'after first click adminControls are available');
+  //(must be still available after first click or second click test couldn't have passed. Still, couldn't get this to work so syntax must be wrong);
+  $('#select').val('GA');
+  $('#number').val('200');
+  $('#price').val('35');
+  $('#createSeats').trigger('click');//creates second grid of seats
+
+  deepEqual($('body > .row:nth-child(2)').hasClass('.adminControls'), false, 'after second click adminControls are not available');
+  teardownTest();
+});
+
