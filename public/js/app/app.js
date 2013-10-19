@@ -27,7 +27,15 @@ function createSeats(){
     seatSection = 'GA';
     seatType = 'general';
   }
+  seatGenerator(number, seatType, price, seatSection);
+  ticketGenerator(number, price, seatSection);
+}
 
+
+// // -------------------------------------------------------------------- //
+// // -------------------------------------------------------------------- //
+// // -------------------------------------------------------------------- //
+function seatGenerator(number, seatType, price, seatSection){
   for(var i = 1; i <= number; i++){
     var $seat = $('<div></div>');
     if(seatSection === 'VIP'){
@@ -39,19 +47,17 @@ function createSeats(){
       $seat.text(seatSection + i);
       $('#general').append($seat);
     }
+  }
+}
+
+function ticketGenerator(number, price, seatSection){
+  for(var i = 1; i <= number; i++){
     var ticket = {};
     ticket.price = price;
     ticket.seatNumber = seatSection + (i);
     tickets.push(ticket);
   }
 }
-
-
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
-
-
 
 // // -------------------------------------------------------------------- //
 // // -------------------------------------------------------------------- //
