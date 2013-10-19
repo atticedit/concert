@@ -1,6 +1,25 @@
 .row
+  .small-12.columns
+    %h1 Concert Tickets
+.row
   .small-3.columns
-    %select#location-select
+    %select#select
       %option General Admission
       %option VIP
   .small-3.columns
+    %input#number{type: 'text', autofocus: 'true', placeholder: 'number of seats'}
+  .small-3.columns
+    %input#price{type: 'text', placeholder: 'seat price'}
+  .small-3.columns
+    %input#createSeats.button.small.radius.success{type: 'button', value: 'Create Seats'}
+.row
+  .small-12.columns
+    #filler
+.row
+  .small-4.columns.small-offset-4
+    #stage
+      %h1 STAGE
+.row
+  .small-8.columns.small-offset-2#wrapper
+    #vip
+    #general

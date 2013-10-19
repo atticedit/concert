@@ -16,13 +16,44 @@
   <div id='qunit'></div>
   <div id='qunit-fixture'>
     <div class='row'>
+      <div class='small-12 columns'>
+        <h1>Concert Tickets</h1>
+      </div>
+    </div>
+    <div class='row'>
       <div class='small-3 columns'>
-        <select id='location-select'>
+        <select id='select'>
           <option>General Admission</option>
           <option>VIP</option>
         </select>
       </div>
-      <div class='small-3 columns'></div>
+      <div class='small-3 columns'>
+        <input autofocus='true' id='number' placeholder='number of seats' type='text'>
+      </div>
+      <div class='small-3 columns'>
+        <input id='price' placeholder='seat price' type='text'>
+      </div>
+      <div class='small-3 columns'>
+        <input class='button small radius success' id='createSeats' type='button' value='Create Seats'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='filler'></div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-4 columns small-offset-4'>
+        <div id='stage'>
+          <h1>STAGE</h1>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-8 columns small-offset-2' id='wrapper'>
+        <div id='vip'></div>
+        <div id='general'></div>
+      </div>
     </div>
   </div>
   <script src='/js/vendor/jquery-1.10.2.js'></script>
