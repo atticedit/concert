@@ -44,11 +44,11 @@ function seatGenerator(number, seatType, price, seatSection){
     var $seat = $('<div></div>');
     if(seatSection === 'VIP'){
       $seat.addClass('seatVip');
-      $seat.text(seatSection + i);
+      $seat.text(i);
       $('#vip').append($seat);
     }else{
       $seat.addClass('seatGeneral');
-      $seat.text(seatSection + i);
+      $seat.text(i);
       $('#general').append($seat);
     }
   }
@@ -59,13 +59,15 @@ function ticketGenerator(number, price, seatSection){
     var ticket = {};
     ticket.price = price;
     ticket.seatNumber = seatSection + (i);
+    ticket.name = '';
     tickets.push(ticket);
   }
 }
 
 function removeControls(){
+  // alert('removeControls just done got called!');
   if(grids.length > 1){
-    $('#adminControls').remove();
+    $('.adminControls').remove();
   }
 }
 // // -------------------------------------------------------------------- //
