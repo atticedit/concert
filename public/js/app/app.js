@@ -8,12 +8,14 @@ $(document).ready(initialize);
 function initialize(fn, flag){
   if(!canRun(flag)) {return;}
   $(document).foundation();
-  $('#createSeats').click(createSeats);
+  $('#createSeats').click(createSeats);//beyond this point happened since the last push
+  // $('#wrapper').on('dblclick', '.seatVip', reserveSeat);
+  // $('#wrapper').on('dblclick', '.seatGeneral', reserveSeat);
 }
 
-// // -------------------------------------------------------------------- //
-// // -------------------------click events------------------------------- //
-// // -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+// -------------------------click events------------------------------- //
+// -------------------------------------------------------------------- //
 
 function createSeats(){
   var number = parseInt($('#number').val(),10);
@@ -35,20 +37,35 @@ function createSeats(){
   removeControls();
 }
 
+// function reserveSeat(){//works in browser but not unit tested yet
+//   var $name = $('#name').val();
+//   var $seat = $(this);
+//   if($(this).hasClass('reserved')){
+//     alert('This seat is already reserved');
+//   }else if($name === ''){
+//     alert('please input name');
+//   }else{
+//     $seat.addClass('reserved');
+//     var reservedSeatNumber = parseInt($seat.text(), 10);
+//     var reservedSeatIndex = reservedSeatNumber - 1;
 
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
+//     tickets[reservedSeatIndex].name = $name;
+//   }
+// }
+
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
 function seatGenerator(number, seatType, price, seatSection){
   for(var i = 1; i <= number; i++){
     var $seat = $('<div></div>');
     if(seatSection === 'VIP'){
       $seat.addClass('seatVip');
-      $seat.text(seatSection + i);
+      $seat.text(i);
       $('#vip').append($seat);
     }else{
       $seat.addClass('seatGeneral');
-      $seat.text(seatSection + i);
+      $seat.text(i);
       $('#general').append($seat);
     }
   }
@@ -59,18 +76,19 @@ function ticketGenerator(number, price, seatSection){
     var ticket = {};
     ticket.price = price;
     ticket.seatNumber = seatSection + (i);
+    ticket.name = '';
     tickets.push(ticket);
   }
 }
 
 function removeControls(){
   if(grids.length > 1){
-    $('#adminControls').remove();
+    $('.adminControls').remove();
   }
 }
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
 
 function canRun(flag){
   var isQunit = $('#qunit').length > 0;
@@ -79,6 +97,6 @@ function canRun(flag){
   return value;
 }
 
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
-// // -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
+// -------------------------------------------------------------------- //
