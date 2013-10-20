@@ -82,6 +82,7 @@ function ticketGenerator(number, price, seatSection){
 }
 
 function removeControls(){
+  // alert('removeControls just done got called!');
   if(grids.length > 1){
     $('.adminControls').remove();
   }
