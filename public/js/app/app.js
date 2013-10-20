@@ -8,9 +8,9 @@ $(document).ready(initialize);
 function initialize(fn, flag){
   if(!canRun(flag)) {return;}
   $(document).foundation();
-  $('#createSeats').click(createSeats);//beyond this point happened since the last push
-  // $('#wrapper').on('dblclick', '.seatVip', reserveSeat);
-  // $('#wrapper').on('dblclick', '.seatGeneral', reserveSeat);
+  $('#createSeats').click(createSeats);
+  $('#wrapper').on('dblclick', '.seatVip', reserveSeat);
+  $('#wrapper').on('dblclick', '.seatGeneral', reserveSeat);
 }
 
 // -------------------------------------------------------------------- //
@@ -37,21 +37,21 @@ function createSeats(){
   removeControls();
 }
 
-// function reserveSeat(){//works in browser but not unit tested yet
-//   var $name = $('#name').val();
-//   var $seat = $(this);
-//   if($(this).hasClass('reserved')){
-//     alert('This seat is already reserved');
-//   }else if($name === ''){
-//     alert('please input name');
-//   }else{
-//     $seat.addClass('reserved');
-//     var reservedSeatNumber = parseInt($seat.text(), 10);
-//     var reservedSeatIndex = reservedSeatNumber - 1;
+function reserveSeat(){//works in browser but not unit tested yet
+  var $name = $('#name').val();
+  var $seat = $(this);
+  if($(this).hasClass('reserved')){
+    alert('This seat is already reserved.');
+  }else if($name === ''){
+    alert('Please input a name.');  // LS
+  }else{
+    $seat.addClass('reserved');
+    var reservedSeatNumber = parseInt($seat.text(), 10);
+    var reservedSeatIndex = reservedSeatNumber - 1;
 
-//     tickets[reservedSeatIndex].name = $name;
-//   }
-// }
+    tickets[reservedSeatIndex].name = $name;
+  }
+}
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
