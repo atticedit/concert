@@ -36,8 +36,6 @@ test('Create seat sections', function(){
   teardownTest();
 });
 
-
-
 test('Create seat sections, in reverse order', function(){
   expect(10);
 
@@ -80,9 +78,20 @@ test('admin controls disappear when both seat grids exist', function(){
   $('#price').val('35');
   $('#createSeats').trigger('click');//creates second grid of seats
 
-  deepEqual($('body > .row:nth-child(2)').hasClass('adminControls'), false, 'after second click adminControls are not available');//not confident about the syntax here. When I tried the inverse it also came out false :(
+  ok($('body > div:nth-child(2)').not('adminControls'), 'after second click adminControls are not available');//not confident about the syntax here. When I tried the inverse it also came out false :(
   teardownTest();
 });
+
+test('reservation system applies names correctly', function(){
+  expect(2);
+//does the following commented bit need to be done or does it already exist from previous tests? Uncomment if necessary
+  $('#select').val('GA');
+  $('#number').val('200');
+  $('#price').val('35');
+  $('#createSeats').trigger('click');
+  $('#name').val('alice');
+  // debugger;
+  $('#general > div:nth-child(10)').trigger('dblclick');//reserves the 10th general admission seat
 
 
 test('reservation system applies names correctly', function(){
@@ -95,11 +104,11 @@ test('reservation system applies names correctly', function(){
   $('#name').val('alice');
   $('#general > div:nth-child(10)').trigger('dblclick');//reserves the 10th general admission seat
 
-
-  deepEqual($('#general > div:nth-child(10)').hasClass('.reserved'), true, 'after GA10 is double clicked it gets the class of "reserved"');
+  ok($('#general > div:nth-child(10)').hasClass('reserved'), 'after 10 is double clicked it gets the class of reserved'); // LS
   deepEqual(tickets[9].name, 'alice', 'the index 9 ticket object in the tickets array should have the name property of alice');
   teardownTest();
 });
+
 
 test('Ensure reservations cannot be overwritten', function(){
   expect(2);
