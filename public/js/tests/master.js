@@ -124,6 +124,8 @@ test('admin controls disappear when both seat grids exist', function(){
 //   $('#price').val('35');
 //   $('#createSeats').trigger('click');//creates seating grid
 //   $('#name').val('alice');
+// $('#general > div:nth-child(10)').trigger('dblclick');//reserves seat 10 for 'alice'
+  deepEqual($('#'))
 
 
 // });
