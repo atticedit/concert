@@ -27,8 +27,18 @@
     #general
 .row
   .small-8.columns.small-offset-2
-    %h1 Reporting
-    .small-6.columns
-      %ul#totals
-    .small-6.columns
-      %ul#seatList
+    %h4 Reporting
+    / .small-6.columns
+    /   %ul#totals Totals
+    /     %li#totalVip
+    /     %li#totalGa
+    /     %li#grandTotal
+    /     %li#vipTickets
+    /     %li#gaTickets
+    /     %li#totalTickets
+    / .small-6.columns
+    /   %ul#seatList Seat List
+    /     %li VIP
+    /       %ul#vipSeatList
+    /     %li General
+    /       %ul#gaSeatList

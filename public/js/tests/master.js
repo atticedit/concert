@@ -82,17 +82,6 @@ test('admin controls disappear when both seat grids exist', function(){
   teardownTest();
 });
 
-test('reservation system applies names correctly', function(){
-  expect(2);
-//does the following commented bit need to be done or does it already exist from previous tests? Uncomment if necessary
-  $('#select').val('GA');
-  $('#number').val('200');
-  $('#price').val('35');
-  $('#createSeats').trigger('click');
-  $('#name').val('alice');
-  // debugger;
-  $('#general > div:nth-child(10)').trigger('dblclick');//reserves the 10th general admission seat
-
 
 test('reservation system applies names correctly', function(){
   expect(2);
@@ -126,14 +115,14 @@ test('Ensure reservations cannot be overwritten', function(){
   deepEqual(tickets[9].name, 'alice', 'the name at index 9 in the tickets array should still be alice');
 });
 
-// test('Start reporting when seats are reserved', function(){
-//   $('#select').val('GA');
-//   $('#number').val('200');
-//   $('#price').val('35');
-//   $('#createSeats').trigger('click');//creates seating grid
-//   $('#name').val('alice');
-// $('#general > div:nth-child(10)').trigger('dblclick');//reserves seat 10 for 'alice'
-  // deepEqual($('#'))
+test('Start reporting when seats are reserved', function(){
+  $('#select').val('GA');
+  $('#number').val('200');
+  $('#price').val('35');
+  $('#createSeats').trigger('click');//creates seating grid
+  $('#name').val('alice');
+$('#general > div:nth-child(10)').trigger('dblclick');//reserves seat 10 for 'alice'
+  deepEqual($('#'))
 
 
-// });
+});
