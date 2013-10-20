@@ -27,3 +27,6 @@
 .filler {
   height: 20px;
   clear: both; }
+
+.reserved {
+  background-color: grey; }
