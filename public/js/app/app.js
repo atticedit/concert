@@ -42,19 +42,26 @@ function createSeats(){
   removeControls();
 }
 
-function reserveSeat(){//works in browser but not unit tested yet
+function reserveSeat(){
   var $name = $('#name').val();
   var $seat = $(this);
+  var $seatClass = '';
+  if($(this).hasClass('seatVip')){
+    $seatClass = 'VIP';
+  }else{
+    $seatClass = 'GA';
+  }
   if($(this).hasClass('reserved')){
     alert('This seat is already reserved.');
   }else if($name === ''){
     alert('Please input a name.');
   }else{
     $seat.addClass('reserved');
-    var reservedSeatNumber = parseInt($seat.text(), 10);
-    var reservedSeatIndex = reservedSeatNumber - 1;
+    var reservedSeat = $seatClass + parseInt($seat.text(), 10);
 
-    tickets[reservedSeatIndex].name = $name;
+    var reservedSeatIndex = _.find(tickets, function(ticket){ return ticket.seatNumber === reservedSeat });
+    reservedSeatIndex.name = $name;
+
     htmlUpdateTable();
   }
 }
@@ -62,10 +69,10 @@ function reserveSeat(){//works in browser but not unit tested yet
 function htmlUpdateTable(){
   var reservedSeats = _.filter(tickets, function(ticket){return ticket.name !== ''});
   $('#totalTickets').text(reservedSeats.length);
-  var vipSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'V'});
-  $('#vipTickets').text(vipSeats.length);
-  var vipPrice = vipSeats[0].price;
-  $('#totalVip').text(vipPrice * vipSeats.length);
+  // var vipSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'V'});
+  // $('#vipTickets').text(vipSeats.length);
+  // var vipPrice = vipSeats[0].price;
+  // $('#totalVip').text(vipPrice * vipSeats.length);
   var gaSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'G'});
   $('#gaTickets').text(gaSeats.length);
   var gaPrice = gaSeats[0].price;
