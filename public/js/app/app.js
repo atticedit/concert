@@ -69,14 +69,25 @@ function reserveSeat(){
 function htmlUpdateTable(){
   var reservedSeats = _.filter(tickets, function(ticket){return ticket.name !== ''});
   $('#totalTickets').text(reservedSeats.length);
-  // var vipSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'V'});
-  // $('#vipTickets').text(vipSeats.length);
-  // var vipPrice = vipSeats[0].price;
-  // $('#totalVip').text(vipPrice * vipSeats.length);
+
+  var vipSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'V'});
+  $('#vipTickets').text(vipSeats.length);
+  if(vipSeats.length > 0){
+    var vipPrice = vipSeats[0].price;
+  }else{
+    var vipPrice = 0;
+  }
+  $('#totalVip').text(vipPrice * vipSeats.length);
+
   var gaSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'G'});
   $('#gaTickets').text(gaSeats.length);
-  var gaPrice = gaSeats[0].price;
+  if(gaSeats.length > 0){
+    var gaPrice = gaSeats[0].price;
+  }else{
+    var gaPrice = 0;
+  }
   $('#totalGa').text(gaPrice * gaSeats.length);
+
   $('#grandTotal').text((vipPrice * vipSeats.length) + (gaPrice * gaSeats.length));
 }
 
@@ -110,7 +121,6 @@ function ticketGenerator(number, price, seatSection){
 }
 
 function removeControls(){
-  // alert('removeControls just done got called!');
   if(grids.length > 1){
     $('.adminControls').remove();
   }
