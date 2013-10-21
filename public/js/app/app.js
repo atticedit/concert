@@ -2,6 +2,9 @@
 
 var tickets = [];
 var grids = [];
+var vipTotal = 0;
+var gaTotal = 0;
+var grandTotal = vipTotal + grandTotal;
 
 $(document).ready(initialize);
 
@@ -50,7 +53,18 @@ function reserveSeat(){//works in browser but not unit tested yet
     var reservedSeatIndex = reservedSeatNumber - 1;
 
     tickets[reservedSeatIndex].name = $name;
+    htmlTable(reservedSeatIndex);
   }
+}
+
+function htmlTable(reservedSeatIndex){
+  // debugger;
+  // if(tickets[reservedSeatIndex].seatNumber.slice(0,1) == 'G'){
+  //   gaTotal += tickets[reservedSeatIndex].price;
+  // }else{
+  //   vipTotal += tickets[reservedSeatIndex].price;
+  // }
+  // var total += tickets[reservedSeatIndex].price;
 }
 
 // -------------------------------------------------------------------- //

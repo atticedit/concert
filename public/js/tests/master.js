@@ -97,7 +97,6 @@ test('reservation system applies names correctly', function(){
   teardownTest();
 });
 
-
 test('Ensure reservations cannot be overwritten', function(){
   expect(2);
 
