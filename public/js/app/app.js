@@ -57,11 +57,12 @@ function reserveSeat(){
     alert('Please input a name.');
   }else{
     $seat.addClass('reserved');
+    $seat.append('<p>' + $name + '</p>');
     var reservedSeat = $seatClass + parseInt($seat.text(), 10);
 
     var reservedSeatIndex = _.find(tickets, function(ticket){ return ticket.seatNumber === reservedSeat });
     reservedSeatIndex.name = $name;
-
+    $(this).children().text($name);
     htmlUpdateTable();
   }
 }
@@ -97,7 +98,7 @@ function htmlUpdateTable(){
 
 function seatGenerator(number, seatType, price, seatSection){
   for(var i = 1; i <= number; i++){
-    var $seat = $('<div></div>');
+    var $seat = $('<div><p class="hide"></p></div>');
     if(seatSection === 'VIP'){
       $seat.addClass('seatVip');
       $seat.text(i);
