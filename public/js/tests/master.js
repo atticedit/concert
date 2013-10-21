@@ -33,7 +33,7 @@ test('Create seat sections', function(){
   deepEqual(tickets.length, 260, 'after second click, should be an array with 260 objects');
   deepEqual(tickets[259].price, 65, 'after second click, price property at array index 259 should be 65');
   deepEqual(tickets[259].seatNumber, 'VIP60', 'after second click, seat number property at array index 259 should be VIP60');
-  teardownTest();
+  // teardownTest();
 });
 
 test('Create seat sections, in reverse order', function(){
@@ -90,18 +90,6 @@ test('reservation system applies names correctly', function(){
   $('#price').val('35');
   $('#createSeats').trigger('click');
   $('#name').val('alice');
-  // debugger;
-  $('#general > div:nth-child(10)').trigger('dblclick');//reserves the 10th general admission seat
-
-
-test('reservation system applies names correctly', function(){
-  expect(2);
-//does the following commented bit need to be done or does it already exist from previous tests? Uncomment if necessary
-  $('#select').val('GA');
-  $('#number').val('200');
-  $('#price').val('35');
-  $('#createSeats').trigger('click');
-  $('#name').val('alice');
   $('#general > div:nth-child(10)').trigger('dblclick');//reserves the 10th general admission seat
 
   ok($('#general > div:nth-child(10)').hasClass('reserved'), 'after 10 is double clicked it gets the class of reserved'); // LS
@@ -126,14 +114,12 @@ test('Ensure reservations cannot be overwritten', function(){
   deepEqual(tickets[9].name, 'alice', 'the name at index 9 in the tickets array should still be alice');
 });
 
-// test('Start reporting when seats are reserved', function(){
-//   $('#select').val('GA');
-//   $('#number').val('200');
-//   $('#price').val('35');
-//   $('#createSeats').trigger('click');//creates seating grid
-//   $('#name').val('alice');
-// $('#general > div:nth-child(10)').trigger('dblclick');//reserves seat 10 for 'alice'
-  // deepEqual($('#'))
-
-
-// });
+test('Start reporting when seats are reserved', function(){
+  $('#select').val('GA');
+  $('#number').val('200');
+  $('#price').val('35');
+  $('#createSeats').trigger('click');//creates seating grid
+  $('#name').val('alice');
+$('#general > div:nth-child(10)').trigger('dblclick');//reserves seat 10 for 'alice'
+  deepEqual($('#'))
+});
