@@ -28,17 +28,33 @@
 .row
   .small-8.columns.small-offset-2
     %h4 Reporting
-    / .small-6.columns
-    /   %ul#totals Totals
-    /     %li#totalVip
-    /     %li#totalGa
-    /     %li#grandTotal
-    /     %li#vipTickets
-    /     %li#gaTickets
-    /     %li#totalTickets
-    / .small-6.columns
-    /   %ul#seatList Seat List
-    /     %li VIP
-    /       %ul#vipSeatList
-    /     %li General
-    /       %ul#gaSeatList
+    .small-6.columns
+      %table
+        %th Totals
+        %tr
+          %td Total VIP:
+          %td#totalVip
+        %tr
+          %td Total GA:
+          %td#totalGa
+        %tr
+          %td Grand Total:
+          %td#grandTotal
+        %tr
+          %td VIP Tickets:
+          %td#vipTickets
+        %tr
+          %td GA Tickets:
+          %td#gaTickets
+        %tr
+          %td Total Tickets:
+          %td#totalTickets
+    .small-6.columns
+      %ul#seatList
+        Seat List
+        %li
+          VIP
+          %ul#vipSeatList
+        %li
+          General
+          %ul#gaSeatList

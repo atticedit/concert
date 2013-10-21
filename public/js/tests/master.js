@@ -113,12 +113,41 @@ test('Ensure reservations cannot be overwritten', function(){
   deepEqual(tickets[9].name, 'alice', 'the name at index 9 in the tickets array should still be alice');
 });
 
-test('Start reporting when seats are reserved', function(){
+test('Display reporting when seats are reserved', function(){
+  expect(17);
+
   $('#select').val('GA');
   $('#number').val('200');
   $('#price').val('35');
   $('#createSeats').trigger('click');//creates seating grid
   $('#name').val('alice');
-$('#general > div:nth-child(10)').trigger('dblclick');//reserves seat 10 for 'alice'
-  deepEqual($('#'))
+  $('#general > div:nth-child(10)').trigger('dblclick');//reserves seat GA10 for 'alice'
+  deepEqual(reporting.gaTotal, 35, 'after first GA reservation, gaTotal should equal 35');
+  deepEqual($('#grandTotal'), 35, 'after first GA reservation, grandTotal should equal 35');
+  deepEqual(reporting.gaTickets, 1, 'after first GA reservation, gaTickets should equal 1');
+  deepEqual($('#totalTickets'), 1, 'after first GA reservation, totalTickets should equal 1');
+  $('#name').val('bob');
+  $('#general > div:nth-child(15)').trigger('dblclick');//reserves seat GA15 for 'bob'
+  deepEqual(reporting.gaTotal, 70, 'after second GA reservation, gaTotal should equal 70');
+  deepEqual($('#grandTotal'), 70, 'after second GA reservation, grandTotal should equal 70');
+  deepEqual(reporting.gaTickets, 2, 'after second GA reservation, gaTickets should equal 2');
+  deepEqual($('#totalTickets'), 2, 'after second GA reservation, totalTickets should equal 2');
+
+  $('#select').val('VIP');
+  $('#number').val('60');
+  $('#price').val('65');
+  $('#createSeats').trigger('click');//creates seating grid
+  $('#name').val('billy');
+  $('#vip > div:nth-child(5)').trigger('dblclick');//reserves seat VIP5 for 'billy'
+  deepEqual(reporting.vipTotal, 65, 'after first VIP reservation, vipTotal should equal 65');
+  deepEqual($('#grandTotal'), 135, 'after first VIP reservation, grandTotal should equal 135');
+  deepEqual(reporting.vipTickets, 1, 'after first VIP reservation, vipTickets should equal 1');
+  deepEqual($('#totalTickets'), 3, 'after first VIP reservation, totalTickets should equal 3');
+  $('#name').val('sally');
+  $('#vip > div:nth-child(7)').trigger('dblclick');//reserves seat VIP7 for 'sally'
+  deepEqual(reporting.vipTotal, 130, 'after second VIP reservation, vipTotal should equal 130');
+  deepEqual(reporting.gaTotal, 70, 'after second VIP reservation, gaTotal should still equal 70');
+  deepEqual($('#grandTotal'), 200, 'after second VIP reservation, grandTotal should equal 200');
+  deepEqual(reporting.vipTickets, 2, 'after second VIP reservation, vipTickets should equal 2');
+  deepEqual($('#totalTickets'), 4, 'after second VIP reservation, totalTickets should equal 4');
 });

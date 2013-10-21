@@ -57,20 +57,48 @@
   <div class='row'>
     <div class='small-8 columns small-offset-2'>
       <h4>Reporting</h4>
-      <!-- .small-6.columns -->
-      <!-- %ul#totals Totals -->
-      <!-- %li#totalVip -->
-      <!-- %li#totalGa -->
-      <!-- %li#grandTotal -->
-      <!-- %li#vipTickets -->
-      <!-- %li#gaTickets -->
-      <!-- %li#totalTickets -->
-      <!-- .small-6.columns -->
-      <!-- %ul#seatList Seat List -->
-      <!-- %li VIP -->
-      <!-- %ul#vipSeatList -->
-      <!-- %li General -->
-      <!-- %ul#gaSeatList -->
+      <div class='small-6 columns'>
+        <table>
+          <th>Totals</th>
+          <tr>
+            <td>Total VIP:</td>
+            <td id='totalVip'></td>
+          </tr>
+          <tr>
+            <td>Total GA:</td>
+            <td id='totalGa'></td>
+          </tr>
+          <tr>
+            <td>Grand Total:</td>
+            <td id='grandTotal'></td>
+          </tr>
+          <tr>
+            <td>VIP Tickets:</td>
+            <td id='vipTickets'></td>
+          </tr>
+          <tr>
+            <td>GA Tickets:</td>
+            <td id='gaTickets'></td>
+          </tr>
+          <tr>
+            <td>Total Tickets:</td>
+            <td id='totalTickets'></td>
+          </tr>
+        </table>
+      </div>
+      <div class='small-6 columns'>
+        <ul id='seatList'>
+          Seat List
+          <li>
+            VIP
+            <ul id='vipSeatList'></ul>
+          </li>
+          <li>
+            General
+            <ul id='gaSeatList'></ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <script src='/js/vendor/jquery-1.10.2.js'></script>

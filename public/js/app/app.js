@@ -2,9 +2,11 @@
 
 var tickets = [];
 var grids = [];
-var vipTotal = 0;
-var gaTotal = 0;
-var grandTotal = vipTotal + grandTotal;
+var reporting = {};
+reporting.vipTotal = 0;
+reporting.gaTotal = 0;
+reporting.vipTickets = 0;
+reporting.gaTickets = 0;
 
 $(document).ready(initialize);
 
@@ -53,23 +55,28 @@ function reserveSeat(){//works in browser but not unit tested yet
     var reservedSeatIndex = reservedSeatNumber - 1;
 
     tickets[reservedSeatIndex].name = $name;
-    htmlTable(reservedSeatIndex);
+    htmlUpdateTable();
   }
 }
 
-function htmlTable(reservedSeatIndex){
-  // debugger;
-  // if(tickets[reservedSeatIndex].seatNumber.slice(0,1) == 'G'){
-  //   gaTotal += tickets[reservedSeatIndex].price;
-  // }else{
-  //   vipTotal += tickets[reservedSeatIndex].price;
-  // }
-  // var total += tickets[reservedSeatIndex].price;
+function htmlUpdateTable(){
+  var reservedSeats = _.filter(tickets, function(ticket){return ticket.name !== ''});
+  $('#totalTickets').text(reservedSeats.length);
+  var vipSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'V'});
+  $('#vipTickets').text(vipSeats.length);
+  var vipPrice = vipSeats[0].price;
+  $('#totalVip').text(vipPrice * vipSeats.length);
+  var gaSeats = _.filter(reservedSeats, function(ticket){return ticket.seatNumber.slice(0,1) == 'G'});
+  $('#gaTickets').text(gaSeats.length);
+  var gaPrice = gaSeats[0].price;
+  $('#totalGa').text(gaPrice * gaSeats.length);
+  $('#grandTotal').text((vipPrice * vipSeats.length) + (gaPrice * gaSeats.length));
 }
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
+
 function seatGenerator(number, seatType, price, seatSection){
   for(var i = 1; i <= number; i++){
     var $seat = $('<div></div>');
