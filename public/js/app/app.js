@@ -64,6 +64,7 @@ function reserveSeat(){
     reservedSeatIndex.name = $name;
     $(this).children().text($name);
     htmlUpdateTable();
+    htmlUpdateSeatList($seatClass, reservedSeat, $name);
   }
 }
 
@@ -90,6 +91,16 @@ function htmlUpdateTable(){
   $('#totalGa').text(gaPrice * gaSeats.length);
 
   $('#grandTotal').text((vipPrice * vipSeats.length) + (gaPrice * gaSeats.length));
+}
+
+function htmlUpdateSeatList($seatClass, reservedSeat, $name){
+  debugger;
+  var $listItem = '<li>' + reservedSeat + ' ' + $name + '</li>';
+  if($seatClass == 'VIP'){
+    $('#vipSeatList').prepend($listItem);
+  }else{
+    $('#gaSeatList').prepend($listItem);
+  }
 }
 
 // -------------------------------------------------------------------- //
