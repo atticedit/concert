@@ -16,17 +16,7 @@
   .small-12.columns
     .filler
 .row
-  .small-4.columns.small-offset-4
-    %input#name{type: 'text', placeholder: 'name'}
-    #stage
-      %h1 STAGE
-.row
-  .small-8.columns.small-offset-2#wrapper
-    #vip
-    .filler
-    #general
-.row
-  .small-8.columns.small-offset-2
+  .small-4.columns
     %h4 Reporting
     .small-6.columns
       %table
@@ -53,8 +43,21 @@
       %ul#seatList
         Seat List
         %li
-          VIP
+          VIP:
           %ul#vipSeatList
         %li
-          General
+          General:
           %ul#gaSeatList
+  .small-8.columns
+    .row
+      .small-6.columns.small-offset-3
+        %input#name{type: 'text', placeholder: 'name'}
+        #stage
+          %h1 STAGE
+        .filler
+    .row
+      .small-12.columns#wrapper
+        #vip
+        .filler
+        #general
+

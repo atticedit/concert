@@ -1,10 +1,11 @@
-#general, #vip {
-  margin-top: 20px;
-  margin-bottom: 10px; }
+h1 {
+  text-align: center; }
 
 #stage {
   height: 150px;
-  border: 1px solid grey; }
+  border: 1px solid grey;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px; }
   #stage h1 {
     font-size: 103px;
     line-height: 120px;
@@ -19,17 +20,32 @@
 .seatGeneral, .seatVip {
   height: 35px;
   width: 35px;
-  background-color: rgba(255, 0, 50, 0.9);
   float: left;
   border: 1px solid grey;
-  font-size: 9px; }
+  font-size: 14px;
+  border-radius: 3px;
+  margin: 1px; }
+
+.seatGeneral {
+  background-color: rgba(30, 120, 120, 0.8); }
+
+.seatVip {
+  background-color: rgba(50, 180, 120, 0.8); }
 
 .filler {
   height: 20px;
   clear: both; }
 
 .reserved {
-  background-color: grey; }
+  background-color: grey;
+  color: white; }
 
-.hide {
-  display: none; }
+h4 {
+  text-align: center; }
+
+ul {
+  background-color: rgba(220, 220, 220, 0.2);
+  border-radius: 5px; }
+  ul li {
+    list-style-type: none;
+    font-size: 14px; }
